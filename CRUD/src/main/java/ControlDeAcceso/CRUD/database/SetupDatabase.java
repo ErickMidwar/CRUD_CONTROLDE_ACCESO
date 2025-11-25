@@ -45,10 +45,10 @@ public class SetupDatabase {
             """;
             stmt.execute(sqlAsistencia);
 
-            System.out.println("✅ Tablas creadas y usuario inicial insertado correctamente.");
+            System.out.println(" Tablas creadas y usuario inicial insertado correctamente.");
 
         } catch (SQLException e) {
-            System.out.println("❌ Error al inicializar la base de datos: " + e.getMessage());
+            System.out.println(" Error al inicializar la base de datos: " + e.getMessage());
         }
     }
 }

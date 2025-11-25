@@ -33,7 +33,7 @@ public class AsistenciaRepository {
             }
 
         } catch (SQLException e) {
-            System.out.println("❌ Error al obtener asistencias: " + e.getMessage());
+            System.out.println(" Error al obtener asistencias: " + e.getMessage());
         }
 
         return lista;
@@ -63,7 +63,7 @@ public class AsistenciaRepository {
             }
 
         } catch (SQLException e) {
-            System.out.println("❌ Error al buscar por DNI: " + e.getMessage());
+            System.out.println(" Error al buscar por DNI: " + e.getMessage());
         }
         return null;
     }
@@ -106,7 +106,7 @@ public class AsistenciaRepository {
             stmt.executeUpdate();
 
         } catch (SQLException e) {
-            System.out.println("❌ Error al actualizar hora de salida: " + e.getMessage());
+            System.out.println(" Error al actualizar hora de salida: " + e.getMessage());
         }
     }
 
@@ -122,7 +122,7 @@ public class AsistenciaRepository {
             stmt.executeUpdate();
 
         } catch (SQLException e) {
-            System.out.println("❌ Error al eliminar asistencia: " + e.getMessage());
+            System.out.println(" Error al eliminar asistencia: " + e.getMessage());
         }
     }
 
@@ -143,7 +143,7 @@ public class AsistenciaRepository {
             stmt.executeUpdate();
 
         } catch (SQLException e) {
-            System.out.println("❌ Error al actualizar asistencia: " + e.getMessage());
+            System.out.println(" Error al actualizar asistencia: " + e.getMessage());
         }
     }
 

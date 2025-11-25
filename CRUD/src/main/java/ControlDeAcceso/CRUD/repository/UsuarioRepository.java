@@ -12,7 +12,7 @@ public class UsuarioRepository {
     // 🔹 Obtener todos los usuarios
     public List<Usuario> obtenerTodos() {
         List<Usuario> lista = new ArrayList<>();
-        String sql = "SELECT * FROM usuarios"; // ✅ tabla correcta y sin filtros
+        String sql = "SELECT * FROM usuarios"; //  tabla correcta y sin filtros
 
         try (Connection conn = DatabaseConnection.getConnection();
              Statement stmt = conn.createStatement();
@@ -31,7 +31,7 @@ public class UsuarioRepository {
             }
 
         } catch (SQLException e) {
-            System.out.println("❌ Error al obtener usuarios: " + e.getMessage());
+            System.out.println(" Error al obtener usuarios: " + e.getMessage());
         }
 
         return lista;
@@ -53,7 +53,7 @@ public class UsuarioRepository {
             stmt.executeUpdate();
 
         } catch (SQLException e) {
-            System.out.println("❌ Error al insertar usuario: " + e.getMessage());
+            System.out.println(" Error al insertar usuario: " + e.getMessage());
         }
     }
 
@@ -74,13 +74,13 @@ public class UsuarioRepository {
             stmt.executeUpdate();
 
         } catch (SQLException e) {
-            System.out.println("❌ Error al actualizar usuario: " + e.getMessage());
+            System.out.println("Error al actualizar usuario: " + e.getMessage());
         }
     }
 
     // 🔹 Eliminar usuario por ID
     public void eliminar(int id) {
-        String sql = "DELETE FROM usuarios WHERE id = ?"; // ✅ plural
+        String sql = "DELETE FROM usuarios WHERE id = ?"; // plural
 
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -89,14 +89,14 @@ public class UsuarioRepository {
             stmt.executeUpdate();
 
         } catch (SQLException e) {
-            System.out.println("❌ Error al eliminar usuario: " + e.getMessage());
+            System.out.println(" Error al eliminar usuario: " + e.getMessage());
         }
     }
 
     // 🔹 Buscar usuario por DNI y contraseña (para login)
     public Usuario buscarPorDniYPassword(String dni, String password) {
         Usuario usuario = null;
-        String sql = "SELECT * FROM usuarios WHERE dni = ? AND password = ?"; // ✅ plural
+        String sql = "SELECT * FROM usuarios WHERE dni = ? AND password = ?"; // plural
 
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -118,7 +118,7 @@ public class UsuarioRepository {
             }
 
         } catch (SQLException e) {
-            System.out.println("❌ Error al autenticar usuario: " + e.getMessage());
+            System.out.println(" Error al autenticar usuario: " + e.getMessage());
         }
 
         return usuario;

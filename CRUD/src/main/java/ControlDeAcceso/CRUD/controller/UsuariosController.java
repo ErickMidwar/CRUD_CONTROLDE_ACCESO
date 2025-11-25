@@ -2,10 +2,16 @@ package ControlDeAcceso.CRUD.controller;
 
 import ControlDeAcceso.CRUD.model.Usuario;
 import ControlDeAcceso.CRUD.repository.UsuarioRepository;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 
 public class UsuariosController {
 
@@ -28,11 +34,16 @@ public class UsuariosController {
 
     @FXML
     public void initialize() {
-        colId.setCellValueFactory(c -> new javafx.beans.property.SimpleIntegerProperty(c.getValue().getId()).asObject());
-        colDni.setCellValueFactory(c -> new javafx.beans.property.SimpleStringProperty(c.getValue().getDni()));
-        colNombre.setCellValueFactory(c -> new javafx.beans.property.SimpleStringProperty(c.getValue().getNombre()));
-        colProfesion.setCellValueFactory(c -> new javafx.beans.property.SimpleStringProperty(c.getValue().getProfesion()));
-        colTipo.setCellValueFactory(c -> new javafx.beans.property.SimpleStringProperty(c.getValue().getTipo()));
+        colId.setCellValueFactory(c ->
+                new SimpleIntegerProperty(c.getValue().getId()).asObject());
+        colDni.setCellValueFactory(c ->
+                new SimpleStringProperty(c.getValue().getDni()));
+        colNombre.setCellValueFactory(c ->
+                new SimpleStringProperty(c.getValue().getNombre()));
+        colProfesion.setCellValueFactory(c ->
+                new SimpleStringProperty(c.getValue().getProfesion()));
+        colTipo.setCellValueFactory(c ->
+                new SimpleStringProperty(c.getValue().getTipo()));
 
         cargarUsuarios();
     }
@@ -51,12 +62,14 @@ public class UsuariosController {
         String tipo = tipoField.getText();
 
         if (dni.isEmpty() || nombre.isEmpty() || password.isEmpty()) {
-            mensajeLabel.setText("⚠️ Todos los campos son obligatorios");
+            mensajeLabel.setText(" Todos los campos marcados son obligatorios");
             return;
         }
 
-        usuarioRepository.insertar(new Usuario(0, dni, nombre, password, profesion, tipo));
-        mensajeLabel.setText("✅ Usuario agregado correctamente");
+        Usuario nuevo = new Usuario(0, dni, nombre, password, profesion, tipo);
+        usuarioRepository.insertar(nuevo);
+
+        mensajeLabel.setText(" ✅ Usuario agregado correctamente");
         limpiarCampos();
         cargarUsuarios();
     }
@@ -65,7 +78,7 @@ public class UsuariosController {
     private void editarUsuario() {
         Usuario seleccionado = tablaUsuarios.getSelectionModel().getSelectedItem();
         if (seleccionado == null) {
-            mensajeLabel.setText("⚠️ Selecciona un usuario para editar");
+            mensajeLabel.setText(" Selecciona un usuario para editar");
             return;
         }
 
@@ -76,7 +89,7 @@ public class UsuariosController {
         seleccionado.setTipo(tipoField.getText());
 
         usuarioRepository.actualizar(seleccionado);
-        mensajeLabel.setText("✅ Usuario actualizado correctamente");
+        mensajeLabel.setText(" ✅ Usuario actualizado correctamente");
         limpiarCampos();
         cargarUsuarios();
     }
@@ -85,12 +98,12 @@ public class UsuariosController {
     private void eliminarUsuario() {
         Usuario seleccionado = tablaUsuarios.getSelectionModel().getSelectedItem();
         if (seleccionado == null) {
-            mensajeLabel.setText("⚠️ Selecciona un usuario para eliminar");
+            mensajeLabel.setText(" Selecciona un usuario para eliminar");
             return;
         }
 
         usuarioRepository.eliminar(seleccionado.getId());
-        mensajeLabel.setText("🗑️ Usuario eliminado correctamente");
+        mensajeLabel.setText(" ✅ Usuario eliminado correctamente");
         cargarUsuarios();
     }
 

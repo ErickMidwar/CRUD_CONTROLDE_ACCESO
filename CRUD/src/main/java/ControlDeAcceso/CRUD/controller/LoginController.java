@@ -47,11 +47,11 @@ public class LoginController {
                 stage.show();
             } catch (IOException e) {
                 e.printStackTrace();
-                errorLabel.setText("❌ Error al cargar la vista principal.");
+                errorLabel.setText(" Error al cargar la vista principal.");
             }
 
         } else {
-            errorLabel.setText("❌ Credenciales incorrectas");
+            errorLabel.setText(" Credenciales incorrectas");
         }
     }
 }

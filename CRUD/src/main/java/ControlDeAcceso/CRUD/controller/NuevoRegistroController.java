@@ -48,15 +48,15 @@ public class NuevoRegistroController {
 
         if (modoEdicion) {
             repo.actualizar(registro);
-            mostrarAlerta(Alert.AlertType.INFORMATION, "Registro actualizado", "✅ Los cambios se guardaron correctamente.");
+            mostrarAlerta(Alert.AlertType.INFORMATION, "Registro actualizado", " Los cambios se guardaron correctamente.");
         } else {
             Asistencia existente = repo.buscarPorDni(dni);
             if (existente != null) {
-                mostrarAlerta(Alert.AlertType.WARNING, "Registro duplicado", "⚠️ Ya existe una asistencia registrada para este DNI.");
+                mostrarAlerta(Alert.AlertType.WARNING, "Registro duplicado", "Ya existe una asistencia registrada para este DNI.");
                 return;
             }
             repo.insertar(registro);
-            mostrarAlerta(Alert.AlertType.INFORMATION, "Asistencia registrada", "✅ Nueva asistencia registrada correctamente.");
+            mostrarAlerta(Alert.AlertType.INFORMATION, "Asistencia registrada", "Nueva asistencia registrada correctamente.");
         }
 
         cerrarVentana();

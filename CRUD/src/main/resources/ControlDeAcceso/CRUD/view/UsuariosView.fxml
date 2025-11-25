@@ -38,6 +38,8 @@
                 <Button text="Agregar" onAction="#agregarUsuario" />
                 <Button text="Editar" onAction="#editarUsuario" />
                 <Button text="Eliminar" onAction="#eliminarUsuario" />
+                <Button fx:id="btnEscanearQR" text="Escanear QR" onAction="#onEscanearQR"/>
+
             </HBox>
 
             <Label fx:id="mensajeLabel" style="-fx-text-fill: green;" />

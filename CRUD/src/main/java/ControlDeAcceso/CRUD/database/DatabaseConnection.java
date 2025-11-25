@@ -11,20 +11,20 @@ public class DatabaseConnection {
 
     public static Connection getConnection() {
         try {
-            // ✅ Asegurarse de que la carpeta "database" exista
+            //  Asegurarse de que la carpeta "database" exista
             File dbFolder = new File("database");
             if (!dbFolder.exists()) {
                 dbFolder.mkdirs();
                 System.out.println("📁 Carpeta 'database' creada automáticamente.");
             }
 
-            // ✅ Conectar a SQLite
+            //  Conectar a SQLite
             if (connection == null || connection.isClosed()) {
                 connection = DriverManager.getConnection(URL);
-                System.out.println("✅ Conexión a SQLite establecida correctamente.");
+                System.out.println("Conexión a SQLite establecida correctamente.");
             }
         } catch (SQLException e) {
-            System.out.println("❌ Error al conectar con la base de datos: " + e.getMessage());
+            System.out.println(" Error al conectar con la base de datos: " + e.getMessage());
         }
         return connection;
     }
@@ -33,10 +33,10 @@ public class DatabaseConnection {
         try {
             if (connection != null && !connection.isClosed()) {
                 connection.close();
-                System.out.println("🔒 Conexión SQLite cerrada correctamente.");
+                System.out.println(" Conexión SQLite cerrada correctamente.");
             }
         } catch (SQLException e) {
-            System.out.println("⚠️ Error al cerrar la conexión: " + e.getMessage());
+            System.out.println(" Error al cerrar la conexión: " + e.getMessage());
         }
     }
 }
